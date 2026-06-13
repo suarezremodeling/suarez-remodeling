@@ -238,6 +238,10 @@
             transition: all 0.3s ease;
             box-shadow: 0 4px 20px rgba(10,31,68,0.05);
             border: 1px solid var(--border);
+            display: block;
+            text-decoration: none;
+            color: inherit;
+            cursor: pointer;
         }
         .service-card:hover {
             transform: translateY(-8px);
@@ -289,6 +293,7 @@
             grid-template-columns: 1fr 1fr;
             gap: 50px;
             align-items: center;
+            scroll-margin-top: 30px;
         }
         .detail-card:nth-child(even) {
             direction: rtl;
@@ -626,62 +631,62 @@
             </div>
 
             <div class="carousel-grid">
-                <div class="service-card">
+                <a class="service-card" href="#detail-electrical">
                     <div class="service-icon">⚡</div>
                     <h3 data-lang="en">Electrical</h3>
                     <h3 data-lang="es">Electricidad</h3>
                     <p data-lang="en">Repairs, installations, and upgrades done safely and to code.</p>
                     <p data-lang="es">Reparaciones, instalaciones y mejoras hechas con seguridad y cumplimiento.</p>
-                </div>
-                <div class="service-card">
+                </a>
+                <a class="service-card" href="#detail-plumbing">
                     <div class="service-icon">🚿</div>
                     <h3 data-lang="en">Plumbing</h3>
                     <h3 data-lang="es">Plomería</h3>
                     <p data-lang="en">Leaks, fixtures, piping, and water heater services.</p>
                     <p data-lang="es">Fugas, accesorios, tuberías y servicios de calentadores de agua.</p>
-                </div>
-                <div class="service-card">
+                </a>
+                <a class="service-card" href="#detail">
                     <div class="service-icon">🏠</div>
                     <h3 data-lang="en">Tile & Ceramic</h3>
                     <h3 data-lang="es">Cerámica</h3>
                     <p data-lang="en">Clean finishes for kitchens, bathrooms, and floors.</p>
                     <p data-lang="es">Acabados limpios para cocinas, baños y pisos.</p>
-                </div>
-                <div class="service-card">
+                </a>
+                <a class="service-card" href="#detail-flooring">
                     <div class="service-icon">🪵</div>
                     <h3 data-lang="en">Flooring</h3>
                     <h3 data-lang="es">Pisos</h3>
                     <p data-lang="en">Laminate and concrete floor finishes that last.</p>
                     <p data-lang="es">Acabados de pisos laminados y de concreto que duran.</p>
-                </div>
-                <div class="service-card">
+                </a>
+                <a class="service-card" href="#detail-fencing">
                     <div class="service-icon">🌿</div>
                     <h3 data-lang="en">Fencing</h3>
                     <h3 data-lang="es">Cercas</h3>
                     <p data-lang="en">Wood and vinyl for privacy, safety, and curb appeal.</p>
                     <p data-lang="es">Madera y vinilo para privacidad, seguridad y estética.</p>
-                </div>
-                <div class="service-card">
+                </a>
+                <a class="service-card" href="#detail-roofing">
                     <div class="service-icon">🏗️</div>
                     <h3 data-lang="en">Metal Roofing</h3>
                     <h3 data-lang="es">Techos Metálicos</h3>
                     <p data-lang="en">Durable, weather-resistant roofing installations.</p>
                     <p data-lang="es">Instalaciones de techos duraderos y resistentes a la intemperie.</p>
-                </div>
-                <div class="service-card">
+                </a>
+                <a class="service-card" href="#detail-hvac">
                     <div class="service-icon">❄️</div>
                     <h3 data-lang="en">Mini-Splits & AC</h3>
                     <h3 data-lang="es">Mini-Splits y AC</h3>
                     <p data-lang="en">Installation and maintenance for year-round comfort.</p>
                     <p data-lang="es">Instalación y mantenimiento para confort durante todo el año.</p>
-                </div>
-                <div class="service-card">
+                </a>
+                <a class="service-card" href="#detail-pressure-washing">
                     <div class="service-icon">💦</div>
                     <h3 data-lang="en">Pressure Washing</h3>
                     <h3 data-lang="es">Lavado a Presión</h3>
                     <p data-lang="en">Restore driveways, siding, patios, and more.</p>
                     <p data-lang="es">Restaura entradas, exteriores, patios y más.</p>
-                </div>
+                </a>
             </div>
         </div>
     </section>
@@ -699,7 +704,7 @@
             </div>
 
             <div class="detail-grid">
-                <div class="detail-card">
+                <div class="detail-card" id="detail-flooring">
                     <div class="detail-image">
                         <img src="flooring.png" alt="Flooring work by Suarez Remodeling">
                     </div>
@@ -713,7 +718,7 @@
                     </div>
                 </div>
 
-                <div class="detail-card">
+                <div class="detail-card" id="detail-fencing">
                     <div class="detail-image">
                         <img src="fencing.png" alt="Fencing work by Suarez Remodeling">
                     </div>
@@ -727,7 +732,7 @@
                     </div>
                 </div>
 
-                <div class="detail-card">
+                <div class="detail-card" id="detail-electrical">
                     <div class="detail-image">
                         <img src="electric.png" alt="Electrical work by Suarez Remodeling">
                     </div>
@@ -741,7 +746,7 @@
                     </div>
                 </div>
 
-                <div class="detail-card">
+                <div class="detail-card" id="detail-plumbing">
                     <div class="detail-image">
                         <img src="plumbing.png" alt="Plumbing work by Suarez Remodeling">
                     </div>
@@ -755,7 +760,7 @@
                     </div>
                 </div>
 
-                <div class="detail-card">
+                <div class="detail-card" id="detail-roofing">
                     <div class="detail-image">
                         <img src="roofing.png" alt="Metal roofing work by Suarez Remodeling">
                     </div>
@@ -769,7 +774,7 @@
                     </div>
                 </div>
 
-                <div class="detail-card">
+                <div class="detail-card" id="detail-hvac">
                     <div class="detail-image">
                         <img src="hvac.png" alt="HVAC and mini-split work by Suarez Remodeling">
                     </div>
@@ -783,7 +788,7 @@
                     </div>
                 </div>
 
-                <div class="detail-card">
+                <div class="detail-card" id="detail-pressure-washing">
                     <div class="detail-image">
                         <img src="pressure-washing.png" alt="Pressure washing by Suarez Remodeling">
                     </div>
