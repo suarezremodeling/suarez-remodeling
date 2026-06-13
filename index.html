@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suarez Remodeling | Maestro de Renovaciones</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy: #0a1f44;
+            --navy-light: #0f2a5c;
+            --gold: #c9a227;
+            --gold-hover: #b8941f;
+            --text-light: #f5f5f5;
+            --text-dark: #0a1f44;
+            --text-muted: #6b7280;
+            --bg-light: #f8f9fa;
+            --bg-white: #ffffff;
+            --border: #e5e7eb;
+            --shadow: 0 10px 40px rgba(10,31,68,0.08);
+            --shadow-lg: 0 20px 60px rgba(10,31,68,0.12);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Language Toggle */
+        .lang-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            padding: 6px;
+            box-shadow: var(--shadow);
+            display: flex;
+            gap: 4px;
+        }
+        .lang-toggle button {
+            border: none;
+            background: transparent;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: var(--text-dark);
+        }
+        .lang-toggle button.active {
+            background: var(--navy);
+            color: var(--text-light);
+        }
+
+        /* HERO */
+        .hero {
+            position: relative;
+            height: 100vh;
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: var(--navy);
+        }
+        .hero-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.55;
+        }
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, rgba(10,31,68,0.2) 0%, rgba(10,31,68,0.75) 100%);
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 0 20px;
+            max-width: 900px;
+        }
+        .hero-logo-img {
+            max-width: 320px;
+            width: 80%;
+            height: auto;
+            margin: 0 auto 25px;
+            filter: drop-shadow(0 4px 20px rgba(0,0,0,0.3));
+        }
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.2rem, 5vw, 3.5rem);
+            color: var(--text-light);
+            margin-bottom: 10px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+        .hero-tagline {
+            font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 40px;
+            font-weight: 300;
+        }
+        .hero-tagline span {
+            display: block;
+            font-size: 0.95em;
+            opacity: 0.85;
+            margin-top: 5px;
+            color: var(--gold);
+        }
+        .btn-primary {
+            display: inline-block;
+            padding: 16px 40px;
+            background: var(--gold);
+            color: var(--navy);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(201,162,39,0.3);
+        }
+        .btn-primary:hover {
+            background: var(--gold-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(201,162,39,0.4);
+        }
+        .btn-outline {
+            display: inline-block;
+            padding: 14px 36px;
+            background: transparent;
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            border-radius: 50px;
+            border: 2px solid rgba(255,255,255,0.4);
+            transition: all 0.3s ease;
+            margin-left: 15px;
+        }
+        .btn-outline:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: var(--text-light);
+        }
+
+        /* Sections */
+        section { padding: 100px 20px; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .section-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: var(--text-dark);
+            margin-bottom: 15px;
+        }
+        .section-header p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Brand Message */
+        .brand-message {
+            background: var(--bg-white);
+            text-align: center;
+        }
+        .brand-message .lead {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.4rem, 3vw, 2rem);
+            color: var(--text-dark);
+            margin-bottom: 25px;
+            line-height: 1.4;
+        }
+        .brand-message p {
+            font-size: 1.05rem;
+            color: #4b5563;
+            max-width: 800px;
+            margin: 0 auto 20px;
+            line-height: 1.8;
+        }
+        .trust-cue {
+            margin-top: 40px;
+            padding: 25px 40px;
+            background: var(--bg-light);
+            border-left: 4px solid var(--gold);
+            display: inline-block;
+            text-align: left;
+            border-radius: 0 8px 8px 0;
+        }
+        .trust-cue strong {
+            display: block;
+            font-size: 1.1rem;
+            color: var(--text-dark);
+            margin-bottom: 5px;
+        }
+        .trust-cue span {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Service Carousel */
+        .services-carousel {
+            background: var(--bg-light);
+        }
+        .carousel-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+        .service-card {
+            background: var(--bg-white);
+            border-radius: 16px;
+            padding: 35px 25px;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(10,31,68,0.05);
+            border: 1px solid var(--border);
+        }
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--gold);
+        }
+        .service-icon {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 20px;
+            background: linear-gradient(135deg, var(--navy), var(--navy-light));
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold);
+            font-size: 28px;
+        }
+        .service-card h3 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+        }
+        .service-card .service-sub {
+            font-size: 0.9rem;
+            color: var(--gold);
+            font-weight: 600;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .service-card p {
+            font-size: 0.9rem;
+            color: #6b7280;
+            line-height: 1.5;
+        }
+
+        /* Service Detail */
+        .services-detail {
+            background: var(--bg-white);
+        }
+        .detail-grid {
+            display: grid;
+            gap: 60px;
+        }
+        .detail-card {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        .detail-card:nth-child(even) {
+            direction: rtl;
+        }
+        .detail-card:nth-child(even) > * {
+            direction: ltr;
+        }
+        .detail-image {
+            width: 100%;
+            height: 380px;
+            background: linear-gradient(135deg, #e5e7eb, #f3f4f6);
+            border-radius: 16px;
+            overflow: hidden;
+            position: relative;
+        }
+        .detail-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .detail-content h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+        }
+        .detail-content .detail-sub {
+            color: var(--gold);
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+        }
+        .detail-content p {
+            color: #4b5563;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+        .detail-meta {
+            display: inline-block;
+            padding: 10px 20px;
+            background: var(--bg-light);
+            border-radius: 8px;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            border-left: 3px solid var(--gold);
+        }
+
+        /* Meet José */
+        .about {
+            background: linear-gradient(135deg, var(--navy), var(--navy-light));
+            color: var(--text-light);
+        }
+        .about .container {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 60px;
+            align-items: center;
+        }
+        .about-image {
+            position: relative;
+        }
+        .about-image img {
+            width: 100%;
+            height: 480px;
+            object-fit: cover;
+            object-position: center top;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            display: block;
+        }
+        .about-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 10px;
+        }
+        .about-content .title {
+            color: var(--gold);
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .about-content p {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+
+        /* Contact */
+        .contact {
+            background: var(--bg-light);
+            text-align: center;
+        }
+        .contact h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 10px;
+            color: var(--text-dark);
+        }
+        .contact .subtitle {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-bottom: 50px;
+        }
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 800px;
+            margin: 0 auto 50px;
+        }
+        .contact-card {
+            background: var(--bg-white);
+            padding: 35px 25px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(10,31,68,0.05);
+            transition: all 0.3s ease;
+        }
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+        }
+        .contact-card .icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--navy), var(--navy-light));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: var(--gold);
+            font-size: 24px;
+        }
+        .contact-card h4 {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            color: var(--text-dark);
+        }
+        .contact-card a {
+            color: var(--gold);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.15rem;
+            transition: color 0.3s;
+        }
+        .contact-card a:hover {
+            color: var(--gold-hover);
+        }
+        .contact-info {
+            margin-top: 40px;
+            padding: 30px 40px;
+            background: var(--bg-white);
+            border-radius: 16px;
+            display: inline-block;
+            text-align: left;
+            box-shadow: 0 4px 20px rgba(10,31,68,0.05);
+        }
+        .contact-info p {
+            margin-bottom: 12px;
+            color: #4b5563;
+            font-size: 1.05rem;
+        }
+        .contact-info strong {
+            color: var(--text-dark);
+        }
+        .contact-badges {
+            margin-top: 30px;
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .badge {
+            padding: 10px 25px;
+            background: var(--navy);
+            color: var(--text-light);
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--navy);
+            color: rgba(255,255,255,0.6);
+            text-align: center;
+            padding: 50px 20px 30px;
+            font-size: 0.9rem;
+        }
+        .footer-logo {
+            max-width: 220px;
+            margin: 0 auto 20px;
+            opacity: 0.95;
+        }
+
+        /* Sticky Mobile Call */
+        .sticky-call {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--bg-white);
+            padding: 12px 20px;
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.1);
+            z-index: 999;
+            justify-content: center;
+            gap: 12px;
+        }
+        .sticky-call a {
+            flex: 1;
+            text-align: center;
+            padding: 14px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+        }
+        .sticky-call .call-btn {
+            background: var(--gold);
+            color: var(--navy);
+        }
+        .sticky-call .text-btn {
+            background: var(--navy);
+            color: var(--text-light);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            section { padding: 60px 20px; }
+            .hero-buttons {
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
+                align-items: center;
+            }
+            .btn-outline { margin-left: 0; }
+            .detail-card,
+            .about .container {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            .detail-card:nth-child(even) { direction: ltr; }
+            .trust-cue {
+                text-align: center;
+                border-left: none;
+                border-top: 4px solid var(--gold);
+                border-radius: 8px 8px 0 0;
+                padding: 20px;
+            }
+            .about-image img { height: 380px; }
+            .sticky-call { display: flex; }
+            body { padding-bottom: 80px; }
+            .contact-grid { grid-template-columns: 1fr; max-width: 400px; }
+        }
+
+        /* Language hide/show */
+        [data-lang="es"] { display: none; }
+        html[lang="es"] [data-lang="en"] { display: none; }
+        html[lang="es"] [data-lang="es"] { display: inline; }
+        html[lang="es"] [data-lang="es"].block,
+        html[lang="es"] [data-lang="es"].section-header,
+        html[lang="es"] [data-lang="es"].detail-card,
+        html[lang="es"] [data-lang="es"].service-card,
+        html[lang="es"] [data-lang="es"].contact-card,
+        html[lang="es"] [data-lang="es"].about-content,
+        html[lang="es"] [data-lang="es"].brand-message,
+        html[lang="es"] [data-lang="es"].contact { display: block; }
+        html[lang="es"] [data-lang="en"].block,
+        html[lang="es"] [data-lang="en"].section-header,
+        html[lang="es"] [data-lang="en"].detail-card,
+        html[lang="es"] [data-lang="en"].service-card,
+        html[lang="es"] [data-lang="en"].contact-card,
+        html[lang="es"] [data-lang="en"].about-content,
+        html[lang="es"] [data-lang="en"].brand-message,
+        html[lang="es"] [data-lang="en"].contact { display: none; }
+        .block { display: block; }
+    </style>
+</head>
+<body>
+
+    <!-- Language Toggle -->
+    <div class="lang-toggle">
+        <button class="active" onclick="setLang('en')">EN</button>
+        <button onclick="setLang('es')">ES</button>
+    </div>
+
+    <!-- HERO -->
+    <section class="hero">
+        <video class="hero-video" autoplay muted loop playsinline poster="">
+            <source src="assets/hero-video.mp4" type="video/mp4">
+        </video>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <img src="assets/logo.png" alt="Suarez Remodeling" class="hero-logo-img">
+            <p class="hero-tagline" data-lang="en">
+                Quality Remodeling. <span>Renovaciones con Maestría.</span>
+            </p>
+            <p class="hero-tagline" data-lang="es">
+                Remodelación de Calidad. <span>Renovaciones con Maestría.</span>
+            </p>
+            <div class="hero-buttons">
+                <a href="tel:727-340-4090" class="btn-primary" data-lang="en">Call for an Estimate</a>
+                <a href="tel:727-340-4090" class="btn-primary" data-lang="es">Llama para una Estimación</a>
+                <a href="#services" class="btn-outline" data-lang="en">View Services</a>
+                <a href="#services" class="btn-outline" data-lang="es">Ver Servicios</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- BRAND MESSAGE -->
+    <section class="brand-message" id="about">
+        <div class="container">
+            <p class="lead" data-lang="en">Your home deserves work done with care, skill, and pride.</p>
+            <p class="lead" data-lang="es">Tu hogar merece un trabajo hecho con cuidado, experiencia y orgullo.</p>
+
+            <p data-lang="en">At Suarez Remodeling, José Suarez brings reliable craftsmanship to home repairs, improvements, and renovations — from floors, tile, fencing, and roofing to plumbing, electrical, AC maintenance, mini-splits, and pressure washing.</p>
+            <p data-lang="es">En Suarez Remodeling, José Suárez ofrece remodelaciones, reparaciones y mejoras del hogar con calidad, limpieza y confianza.</p>
+
+            <div class="trust-cue">
+                <strong data-lang="en">Led by José Suarez, Maestro en Remodelaciones</strong>
+                <strong data-lang="es">Dirigido por José Suárez, Maestro en Remodelaciones</strong>
+                <span data-lang="en">Reliable remodeling, repairs, and home improvement services with bilingual communication and attention to detail.</span>
+                <span data-lang="es">Servicios confiables de remodelación, reparaciones y mejoras del hogar con comunicación bilingüe y atención al detalle.</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICE CAROUSEL -->
+    <section class="services-carousel" id="services">
+        <div class="container">
+            <div class="section-header" data-lang="en">
+                <h2>Our Services</h2>
+                <p>From repairs to full renovations — we handle it all with clean, professional results.</p>
+            </div>
+            <div class="section-header" data-lang="es">
+                <h2>Nuestros Servicios</h2>
+                <p>Desde reparaciones hasta renovaciones completas — lo hacemos todo con resultados limpios y profesionales.</p>
+            </div>
+
+            <div class="carousel-grid">
+                <div class="service-card">
+                    <div class="service-icon">⚡</div>
+                    <h3 data-lang="en">Electrical</h3>
+                    <h3 data-lang="es">Electricidad</h3>
+                    <p data-lang="en">Repairs, installations, and upgrades done safely and to code.</p>
+                    <p data-lang="es">Reparaciones, instalaciones y mejoras hechas con seguridad y cumplimiento.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🚿</div>
+                    <h3 data-lang="en">Plumbing</h3>
+                    <h3 data-lang="es">Plomería</h3>
+                    <p data-lang="en">Leaks, fixtures, piping, and water heater services.</p>
+                    <p data-lang="es">Fugas, accesorios, tuberías y servicios de calentadores de agua.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🏠</div>
+                    <h3 data-lang="en">Tile & Ceramic</h3>
+                    <h3 data-lang="es">Cerámica</h3>
+                    <p data-lang="en">Clean finishes for kitchens, bathrooms, and floors.</p>
+                    <p data-lang="es">Acabados limpios para cocinas, baños y pisos.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🪵</div>
+                    <h3 data-lang="en">Flooring</h3>
+                    <h3 data-lang="es">Pisos</h3>
+                    <p data-lang="en">Laminate and concrete floor finishes that last.</p>
+                    <p data-lang="es">Acabados de pisos laminados y de concreto que duran.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🌿</div>
+                    <h3 data-lang="en">Fencing</h3>
+                    <h3 data-lang="es">Cercas</h3>
+                    <p data-lang="en">Wood and vinyl for privacy, safety, and curb appeal.</p>
+                    <p data-lang="es">Madera y vinilo para privacidad, seguridad y estética.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🏗️</div>
+                    <h3 data-lang="en">Metal Roofing</h3>
+                    <h3 data-lang="es">Techos Metálicos</h3>
+                    <p data-lang="en">Durable, weather-resistant roofing installations.</p>
+                    <p data-lang="es">Instalaciones de techos duraderos y resistentes a la intemperie.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">❄️</div>
+                    <h3 data-lang="en">Mini-Splits & AC</h3>
+                    <h3 data-lang="es">Mini-Splits y AC</h3>
+                    <p data-lang="en">Installation and maintenance for year-round comfort.</p>
+                    <p data-lang="es">Instalación y mantenimiento para confort durante todo el año.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">💦</div>
+                    <h3 data-lang="en">Pressure Washing</h3>
+                    <h3 data-lang="es">Lavado a Presión</h3>
+                    <p data-lang="en">Restore driveways, siding, patios, and more.</p>
+                    <p data-lang="es">Restaura entradas, exteriores, patios y más.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICE DETAIL -->
+    <section class="services-detail" id="detail">
+        <div class="container">
+            <div class="section-header" data-lang="en">
+                <h2>Service Details</h2>
+                <p>Polished, confident, and built to last — every project matters.</p>
+            </div>
+            <div class="section-header" data-lang="es">
+                <h2>Detalles de Servicios</h2>
+                <p>Pulidos, confiables y hechos para durar — cada proyecto importa.</p>
+            </div>
+
+            <div class="detail-grid">
+                <div class="detail-card">
+                    <div class="detail-image">
+                        <img src="assets/flooring.png" alt="Flooring work by Suarez Remodeling">
+                    </div>
+                    <div class="detail-content">
+                        <h3 data-lang="en">Flooring / Pisos</h3>
+                        <h3 data-lang="es">Pisos / Flooring</h3>
+                        <p data-lang="en">From laminate flooring to concrete floor finishes, Suarez Remodeling helps create clean, durable surfaces that improve the look and function of your home.</p>
+                        <p data-lang="es">Desde pisos laminados hasta acabados de concreto, Suarez Remodeling crea superficies limpias y duraderas que mejoran la apariencia y función de tu hogar.</p>
+                        <span class="detail-meta" data-lang="en">Ideal for: new installations, repairs, upgrades</span>
+                        <span class="detail-meta" data-lang="es">Ideal para: nuevas instalaciones, reparaciones, mejoras</span>
+                    </div>
+                </div>
+
+                <div class="detail-card">
+                    <div class="detail-image">
+                        <img src="assets/fencing.png" alt="Fencing work by Suarez Remodeling">
+                    </div>
+                    <div class="detail-content">
+                        <h3 data-lang="en">Fencing / Cercas</h3>
+                        <h3 data-lang="es">Cercas / Fencing</h3>
+                        <p data-lang="en">Wood and vinyl fencing services for privacy, curb appeal, safety, and outdoor living spaces.</p>
+                        <p data-lang="es">Servicios de cercas de madera y vinilo para privacidad, estética, seguridad y espacios al aire libre.</p>
+                        <span class="detail-meta" data-lang="en">Ideal for: residential boundaries, garden enclosures, pool safety</span>
+                        <span class="detail-meta" data-lang="es">Ideal para: límites residenciales, jardines, seguridad de piscinas</span>
+                    </div>
+                </div>
+
+                <div class="detail-card">
+                    <div class="detail-image">
+                        <img src="assets/electric.png" alt="Electrical work by Suarez Remodeling">
+                    </div>
+                    <div class="detail-content">
+                        <h3 data-lang="en">Electrical / Electricidad</h3>
+                        <h3 data-lang="es">Electricidad / Electrical</h3>
+                        <p data-lang="en">Safe electrical repairs, outlet installations, panel upgrades, and wiring services done to code with clean workmanship.</p>
+                        <p data-lang="es">Reparaciones eléctricas seguras, instalación de tomacorrientes, mejoras de paneles y servicios de cableado a código con trabajo limpio.</p>
+                        <span class="detail-meta" data-lang="en">Ideal for: repairs, new circuits, safety upgrades</span>
+                        <span class="detail-meta" data-lang="es">Ideal para: reparaciones, circuitos nuevos, mejoras de seguridad</span>
+                    </div>
+                </div>
+
+                <div class="detail-card">
+                    <div class="detail-image">
+                        <img src="assets/plumbing.png" alt="Plumbing work by Suarez Remodeling">
+                    </div>
+                    <div class="detail-content">
+                        <h3 data-lang="en">Plumbing / Plomería</h3>
+                        <h3 data-lang="es">Plomería / Plumbing</h3>
+                        <p data-lang="en">Expert leak repair, fixture replacement, drain cleaning, and under-sink plumbing services with lasting results.</p>
+                        <p data-lang="es">Reparación experta de fugas, reemplazo de accesorios, limpieza de drenajes y servicios de plomería bajo el fregadero con resultados duraderos.</p>
+                        <span class="detail-meta" data-lang="en">Ideal for: leaks, clogs, fixture installs, pipe repairs</span>
+                        <span class="detail-meta" data-lang="es">Ideal para: fugas, obstrucciones, instalación de accesorios, reparación de tuberías</span>
+                    </div>
+                </div>
+
+                <div class="detail-card">
+                    <div class="detail-image">
+                        <img src="assets/roofing.png" alt="Metal roofing work by Suarez Remodeling">
+                    </div>
+                    <div class="detail-content">
+                        <h3 data-lang="en">Metal Roofing / Techos Metálicos</h3>
+                        <h3 data-lang="es">Techos Metálicos / Metal Roofing</h3>
+                        <p data-lang="en">Long-lasting metal roofing solutions that stand up to wind, rain, and sun. Professional installation with proper sealing and drainage.</p>
+                        <p data-lang="es">Soluciones de techos metálicos duraderos que resisten viento, lluvia y sol. Instalación profesional con sellado y drenaje adecuados.</p>
+                        <span class="detail-meta" data-lang="en">Ideal for: replacements, new builds, storm repairs</span>
+                        <span class="detail-meta" data-lang="es">Ideal para: reemplazos, construcciones nuevas, reparaciones por tormentas</span>
+                    </div>
+                </div>
+
+                <div class="detail-card">
+                    <div class="detail-image">
+                        <img src="assets/hvac.png" alt="HVAC and mini-split work by Suarez Remodeling">
+                    </div>
+                    <div class="detail-content">
+                        <h3 data-lang="en">Mini-Splits & AC</h3>
+                        <h3 data-lang="es">Mini-Splits y AC</h3>
+                        <p data-lang="en">Installation and maintenance of mini-split systems and AC units for year-round comfort in the Florida heat.</p>
+                        <p data-lang="es">Instalación y mantenimiento de sistemas mini-split y unidades de AC para confort durante todo el año en el calor de Florida.</p>
+                        <span class="detail-meta" data-lang="en">Ideal for: new installs, seasonal maintenance, repairs</span>
+                        <span class="detail-meta" data-lang="es">Ideal para: instalaciones nuevas, mantenimiento estacional, reparaciones</span>
+                    </div>
+                </div>
+
+                <div class="detail-card">
+                    <div class="detail-image">
+                        <img src="assets/pressure-washing.png" alt="Pressure washing by Suarez Remodeling">
+                    </div>
+                    <div class="detail-content">
+                        <h3 data-lang="en">Pressure Washing / Lavado a Presión</h3>
+                        <h3 data-lang="es">Lavado a Presión / Pressure Washing</h3>
+                        <p data-lang="en">Restore the appearance of driveways, patios, siding, and decks. Professional-grade equipment removes dirt, mold, and stains without damage.</p>
+                        <p data-lang="es">Restaura la apariencia de entradas, patios, exteriores y decks. Equipo profesional elimina suciedad, moho y manchas sin causar daño.</p>
+                        <span class="detail-meta" data-lang="en">Ideal for: exterior refresh, pre-sale cleaning, seasonal upkeep</span>
+                        <span class="detail-meta" data-lang="es">Ideal para: renovación exterior, limpieza previa a venta, mantenimiento estacional</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MEET JOSÉ -->
+    <section class="about" id="jose">
+        <div class="container">
+            <div class="about-image">
+                <img src="assets/jose.png" alt="José Suarez - Maestro en Remodelaciones">
+            </div>
+            <div class="about-content">
+                <h2 data-lang="en">José Suarez</h2>
+                <h2 data-lang="es">José Suárez</h2>
+                <p class="title">Maestro en Remodelaciones</p>
+
+                <p data-lang="en">José Suarez brings hands-on experience, attention to detail, and pride in craftsmanship to every project. Whether it's a repair, installation, remodel, or exterior improvement, his goal is simple: clean work, honest service, and a finished result the homeowner can feel good about.</p>
+                <p data-lang="es">José Suárez aporta experiencia práctica, atención al detalle y orgullo en cada proyecto. Ya sea una reparación, instalación, remodelación o mejora exterior, su meta es sencilla: trabajo limpio, servicio honesto y un resultado bien hecho.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 data-lang="en">Ready to improve your home?</h2>
+            <h2 data-lang="es">¿Listo para mejorar tu hogar?</h2>
+            <p class="subtitle" data-lang="en">Call or text José today for a free estimate.</p>
+            <p class="subtitle" data-lang="es">Llama o envía un mensaje a José hoy para una estimación gratuita.</p>
+
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <div class="icon">📞</div>
+                    <h4 data-lang="en">Call Now</h4>
+                    <h4 data-lang="es">Llamar Ahora</h4>
+                    <a href="tel:727-340-4090">(727) 340-4090</a>
+                </div>
+                <div class="contact-card">
+                    <div class="icon">💬</div>
+                    <h4 data-lang="en">Text Message</h4>
+                    <h4 data-lang="es">Enviar Mensaje</h4>
+                    <a href="sms:727-340-4090">(727) 340-4090</a>
+                </div>
+            </div>
+
+            <div class="contact-info">
+                <p><strong data-lang="en">Service Area:</strong><strong data-lang="es">Área de Servicio:</strong> <span data-lang="en">St. Petersburg, FL and the Tampa Bay Area</span><span data-lang="es">St. Petersburg, FL y el Área de Tampa Bay</span></p>
+                <p><strong data-lang="en">Hours:</strong><strong data-lang="es">Horario:</strong> <span data-lang="en">Mon–Sat, 7:00 AM – 6:00 PM</span><span data-lang="es">Lun–Sáb, 7:00 AM – 6:00 PM</span></p>
+                <p><strong data-lang="en">Estimates:</strong><strong data-lang="es">Estimaciones:</strong> <span data-lang="en">Free in-person estimates</span><span data-lang="es">Estimaciones gratuitas en persona</span></p>
+            </div>
+
+            <div class="contact-badges">
+                <span class="badge" data-lang="en">Licensed & Insured</span>
+                <span class="badge" data-lang="es">Licenciado y Asegurado</span>
+                <span class="badge" data-lang="en">Bilingual Service</span>
+                <span class="badge" data-lang="es">Servicio Bilingüe</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- STICKY MOBILE CALL -->
+    <div class="sticky-call">
+        <a href="tel:727-340-4090" class="call-btn" data-lang="en">Call José</a>
+        <a href="tel:727-340-4090" class="call-btn" data-lang="es">Llamar a José</a>
+        <a href="sms:727-340-4090" class="text-btn" data-lang="en">Text</a>
+        <a href="sms:727-340-4090" class="text-btn" data-lang="es">Mensaje</a>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <img src="assets/logo-full.png" alt="Suarez Remodeling Services" class="footer-logo">
+        <p data-lang="en">© 2026 Suarez Remodeling. All rights reserved. | Maestro de Renovaciones</p>
+        <p data-lang="es">© 2026 Suarez Remodeling. Todos los derechos reservados. | Maestro de Renovaciones</p>
+    </footer>
+
+    <script>
+        function setLang(lang) {
+            document.documentElement.lang = lang;
+            document.querySelectorAll('.lang-toggle button').forEach(btn => {
+                btn.classList.toggle('active', btn.textContent.toLowerCase() === lang);
+            });
+            localStorage.setItem('suarez-lang', lang);
+        }
+        const saved = localStorage.getItem('suarez-lang');
+        if (saved) setLang(saved);
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+    </script>
+
+</body>
+</html>
