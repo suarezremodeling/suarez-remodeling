@@ -555,25 +555,12 @@
         /* Language hide/show */
         [data-lang="es"] { display: none; }
         html[lang="es"] [data-lang="en"] { display: none; }
-        html[lang="es"] [data-lang="es"] { display: inline; }
-        html[lang="es"] [data-lang="es"].block,
-        html[lang="es"] [data-lang="es"].section-header,
-        html[lang="es"] [data-lang="es"].detail-card,
-        html[lang="es"] [data-lang="es"].service-card,
-        html[lang="es"] [data-lang="es"].contact-card,
-        html[lang="es"] [data-lang="es"].about-content,
-        html[lang="es"] [data-lang="es"].brand-message,
-        html[lang="es"] [data-lang="es"].hero-tagline,
-        html[lang="es"] [data-lang="es"].contact { display: block; }
-        html[lang="es"] [data-lang="en"].block,
-        html[lang="es"] [data-lang="en"].section-header,
-        html[lang="es"] [data-lang="en"].detail-card,
-        html[lang="es"] [data-lang="en"].service-card,
-        html[lang="es"] [data-lang="en"].contact-card,
-        html[lang="es"] [data-lang="en"].about-content,
-        html[lang="es"] [data-lang="en"].brand-message,
-        html[lang="es"] [data-lang="en"].hero-tagline,
-        html[lang="es"] [data-lang="en"].contact { display: none; }
+        html[lang="es"] [data-lang="es"] { display: revert; }
+        /* Buttons need inline-block, which `revert` doesn't restore */
+        html[lang="es"] a[data-lang="es"].btn-primary,
+        html[lang="es"] a[data-lang="es"].btn-outline,
+        html[lang="es"] a[data-lang="es"].call-btn,
+        html[lang="es"] a[data-lang="es"].text-btn { display: inline-block; }
         .block { display: block; }
     </style>
 </head>
@@ -592,7 +579,7 @@
         </video>
         <div class="hero-overlay"></div>
         <div class="hero-content">
-            <img src="logo-full.png" alt="Suarez Remodeling" class="hero-logo-img">
+            <img src="logo.png" alt="Suarez Remodeling" class="hero-logo-img">
             <p class="hero-tagline" data-lang="en">
                 Quality Remodeling. <span>Renovaciones con Maestría.</span>
             </p>
@@ -876,7 +863,7 @@
 
     <!-- FOOTER -->
     <footer>
-        <img src="logo.png" alt="Suarez Remodeling Services" class="footer-logo">
+        <img src="logo-full.png" alt="Suarez Remodeling Services" class="footer-logo">
         <p data-lang="en">© 2026 Suarez Remodeling. All rights reserved. | Maestro de Renovaciones</p>
         <p data-lang="es">© 2026 Suarez Remodeling. Todos los derechos reservados. | Maestro de Renovaciones</p>
     </footer>
